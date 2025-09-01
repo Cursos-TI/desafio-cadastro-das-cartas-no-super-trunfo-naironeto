@@ -13,6 +13,8 @@ int main() {
     float area1;
     float pib1;
     int pontosTuristicos1;
+    float densidade1; //Adições do nível aventureiro
+    float pib_per_capita1;
 
     // Variáveis da segunda carta
     // (copiei as variaveis da primeira carta e substitui o 1 pelo 2, pois o processo é o mesmo.) 
@@ -23,6 +25,8 @@ int main() {
     float area2;
     float pib2;
     int pontosTuristicos2;
+    float densidade2;
+    float pib_per_capita2;
 
     
     // Coleta de dados e cadastro das Cartas:
@@ -37,7 +41,7 @@ int main() {
     scanf("%s", cod_carta1); // %s = string (permite mais de um char) 
 
     printf("Digite o nome da cidade: ");
-    scanf("%s", cidade1);
+    scanf(" %49[^\n]", cidade1); //Fiz as mudanças que a IA sugeriu para aceitar nomes de cidades compostos, porém estou pesquisando sobre o fgets e parece ser algo mais seguro.
 
     printf("Digite a população de cidade: ");
     scanf("%d", &populacao1); // %d = Números inteiros 
@@ -62,7 +66,7 @@ int main() {
     scanf("%s", cod_carta2); 
 
     printf("Digite o nome da cidade: ");
-    scanf("%s", cidade2);
+    scanf(" %49[^\n]", cidade2);
 
     printf("Digite a população de cidade: ");
     scanf("%d", &populacao2);  
@@ -76,6 +80,12 @@ int main() {
     printf("Digite o número de pontos turísticos: ");
     scanf("%d", &pontosTuristicos2);
 
+    // Cálculos das variaveis derivadas
+    densidade1 = populacao1 / area1;
+    pib_per_capita1 = pib1 / populacao1;
+    densidade2 = populacao2 / area2;
+    pib_per_capita2 = pib2 / populacao2;
+
     // Exibição dos Dados das Cartas:
 
     printf("\n--- Dados da primeira carta ---\n");
@@ -86,6 +96,8 @@ int main() {
     printf("Área: %.2f\n", area1); // o ".2" antes do "f" indica a precisão das casas decimais, nesse caso, duas.
     printf("PIB: %.2f\n", pib1);
     printf("Pontos Turísticos: %d\n", pontosTuristicos1);
+    printf("Densidade populacional: %.2f habitantes/km²\n", densidade1);
+    printf("PIB per capita: %.2f\n", pib_per_capita1);
 
     printf("\n--- Dados da segunda carta ---\n");
     printf("Estado: %c\n", estado2);
@@ -95,6 +107,8 @@ int main() {
     printf("Área: %.2f\n", area2);
     printf("PIB: %.2f\n", pib2);
     printf("Pontos Turísticos: %d\n", pontosTuristicos2);
+    printf("Densidade populacional: %.2f habitantes/km²\n", densidade2);
+    printf("PIB per capita: %.2f\n", pib_per_capita2);
 
 
     return 0;
